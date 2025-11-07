@@ -1,0 +1,21 @@
+name: Mein erster Workflow
+
+on: push
+  # TODODONE: Fügen Sie hier den Trigger für 'push' hinzu
+
+jobs:
+  gruessen:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Ausgabe Begrüßung
+        run: echo "Hallo von GitHub Actions!"
+      
+      - name: Datum anzeigen
+        # TODODONE: Fügen Sie hier einen Befehl ein, der das aktuelle Datum ausgibt
+        run: date
+      
+      - name: Systeminfo
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "Job Status: ${{ job.status }}"
