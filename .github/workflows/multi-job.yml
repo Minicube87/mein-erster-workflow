@@ -15,8 +15,8 @@ jobs:
       - name: Code-Stil prüfen
         run: |
           echo "Prüfe Code-Stil..."
-          # TODO: Fügen Sie eine Ausgabe hinzu, die "Lint erfolgreich" ausgibt
-          _______________
+          # TODODONE: Fügen Sie eine Ausgabe hinzu, die "Lint erfolgreich" ausgibt
+          echo "Lint erfolgreich"
 
   test:
     runs-on: ubuntu-latest
@@ -49,6 +49,6 @@ jobs:
           sleep 2
           echo "Build abgeschlossen!"
       
-      # TODO: Fügen Sie einen Step hinzu, der eine Datei erstellt
+      # TODODONE: Fügen Sie einen Step hinzu, der eine Datei erstellt
       - name: Erstelle Datei
         run: touch example.txt
