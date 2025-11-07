@@ -1,0 +1,54 @@
+name: Multi-Job Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Code-Stil prüfen
+        run: |
+          echo "Prüfe Code-Stil..."
+          # TODO: Fügen Sie eine Ausgabe hinzu, die "Lint erfolgreich" ausgibt
+          _______________
+
+  test:
+    runs-on: ubuntu-latest
+    # TODODONE: Machen Sie diesen Job abhängig vom 'lint' Job
+    needs: lint
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Tests ausführen
+        run: |
+          echo "Führe Tests aus..."
+          echo "Test 1:Bestanden"
+          echo "Test 2:Bestanden"
+          # TODODONE: Fügen Sie einen dritten Test hinzu
+          echo "Test 3:Bestanden"
+
+  build:
+    runs-on: ubuntu-latest
+    # TODODONE: Machen Sie diesen Job abhängig vom 'test' Job
+    needs: test
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Anwendung bauen
+        run: |
+          echo "Baue Anwendung..."
+          # Simuliere Build-Zeit
+          sleep 2
+          echo "Build abgeschlossen!"
+      
+      # TODO: Fügen Sie einen Step hinzu, der eine Datei erstellt
+      - name: Erstelle Datei
+        run: touch example.txt
