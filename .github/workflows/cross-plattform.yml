@@ -1,0 +1,39 @@
+name: Cross-Platform Test
+
+on: push
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.8', '3.9', '3.10']
+        # TODODONE: Schließen Sie Windows mit Python 3.8 aus
+        exclude:
+          - os: windows-latest
+            python-version: 3.8
+    
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      - name: Display Python version
+        run: python --version
+      
+      # TODO: Fügen Sie einen OS-spezifischen Step hinzu
+      - name: OS-spezifischer Befehl
+        run: |
+          # Verwenden Sie if-Bedingungen für OS-spezifische Befehle
+          if [ "${{ runner.os }}" == "Linux" ]; then
+            echo "Linux succeed!"
+          elif [ "${{ runner.os }}" == "Windows" ]; then
+            echo "Windows succeed!"
+          elif [ "${{ runner.os }}" == "MacOS" ]; then
+            echo "MacOS succeed!"
+          fi
